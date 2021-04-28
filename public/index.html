@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>第九组个人博客</title>
+    
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script  src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container" id="container">
+            <a class="title" href="">第九组个人博客|技术博客</a>
+            <input type="button" value="≡" class="barbutton" @click="changeshowlist" />
+            <ul class="menu" v-if="showlist">
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="./sitemap.html">地图</a></li>
+                <li><a href="./about.html">关于</a></li>
+                <li><a href="./gusetbook.html">留言</a></li>
+                <!-- <li><a href="#">地图</a></li>
+                <li><a href="#">关于</a></li> -->
+                <!-- <li><a href="./gusetbook.html">留言</a></li> -->
+            </ul>
+            <div class="search_bar" >
+                <input type="text" placeholder="输入关键词查找" v-model="id">
+                <a :href="gethref()">搜索</a>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content_left">
+            <div class="every_day" id="every_day">
+                <span>每日一句</span>
+                <img class="every_day_refresh" :class="role? 'role':'' " @mouseover="rolefun()" @mouseout="rolefun()" @click='getradom()' src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1598855464124&di=5896640d65140bf5d4000624f0c345c7&imgtype=0&src=http%3A%2F%2Fpic.51yuansu.com%2Fpic3%2Fcover%2F01%2F59%2F43%2F594d7b765a451_610.jpg" alt="">
+                <p v-html="getContent"></p>
+                <p></p>
+            </div>
+            <div class="article_list" id="article_list">
+                <div class="article" v-for="article in articleList">
+                    <a v-bind:href="article.link" class="article_title">{{article.title}}</a>
+                    <p class="article_content">{{article.content}}</p>
+                    <div class="article_foot">发布于{{article.date}} |  浏览({{article.views}}) | Tags：{{article.tags}}</div>
+                </div> 
+                 <div class="pager">
+                     <ul>
+                       
+                         <li v-for="pages in showpage" v-bind:class="{abc:(pages == page) && (pages !='上一页'&&'下一页') }" @click="movePage(pages)" >{{pages}}</li>
+                       
+                     </ul>
+                 </div>
+            </div>
+        </div>  
+        <div class="content_right">
+            <div class="right_moodule" id="random_tages">
+                <div>随机标签云</div>
+                <a :href="gettagblogs(tag.tag)"  v-for="tag in tags" v-bind:style="{color:randomColor(),fontSize:randomSize()}">{{tag.tag}}</a>
+                
+
+            </div>
+            <div class="right_moodule" id="new_hot">
+                <div>最近热门</div>
+                <ul>
+                    <li v-for="hot in titleList"><a v-bind:href="hot.link">{{hot.title}}
+                        </a></li>
+                </ul>
+
+            </div>
+            <div class="right_moodule" id="new_comments">
+                <div>最新评论</div>
+                <ul>
+                    <li v-for="item in commentList">
+                        <div>
+                            <span>{{item.user_name}}</span>
+                            <span class="pull_right">{{item.ctime}}</span>
+                        </div>
+                        <p>{{item.comments}}</p>
+                    </li>
+                 
+                 
+                </ul>
+
+            </div>
+            <div class="right_moodule">
+                <div>友情链接</div>
+               <span><a href="">fdsafdsfda</a></span>
+               <span><a href="">fdsafdsfda</a></span>
+               <span><a href="">fdsafdsfda</a></span>
+               <span><a href="">fdsafdsfda</a></span>
+               <span><a href="">fdsafdsfda</a></span>
+               <span><a href="">fdsafdsfda</a></span>
+               <span><a href="">fdsafdsfda</a></span>
+               <span><a href="">fdsafdsfda</a></span>
+
+            </div>
+        </div> 
+     </div>
+    <footer>
+        <ul>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+            <li>C/C++</li>
+        </ul>
+        <p>Copyright © 2010-2020  个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计</p>
+    </footer>
+    <script   type="module" src="./js/index.js"></script>
+    <script   src="./js/base.js" ></script>
+    <!-- <script src="D:/前端代码/personalBlog/PersonalBlog/util/TimeUtil.js"></script> -->
+</body>
+</html>

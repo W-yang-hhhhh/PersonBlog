@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        html,body{
+            height: 100%;
+        }
+        .inall{
+            width: 100%;
+            text-align: center;
+            height: 100%;
+        }
+        .option{
+            
+            width: 15%;
+            height:100%;
+            float: left;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            padding-top: 40px;
+            background: #4d5e70;
+        }
+        .option dl,dd{
+             
+             color: #b3bcc5;
+            padding: 10px;
+            /* margin-bottom: 10px; */
+             
+        }
+        .option dl{
+            font-weight: bold;
+            color: #fff;
+        }
+        .option dd{
+            cursor: pointer;
+        }
+        .option dd.active{
+            background-color: #ddd;
+            color: #354457;
+        }
+        .option dd:hover{
+            background-color: #ddd;
+            color: #354457;
+        }
+        .addBlog{
+            width: 85%;
+            height: 100%;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            padding:30px;
+            float: right;
+        }
+        .deleteBlog{
+            width: 85%;
+            height: 100%;
+            
+            box-sizing: border-box;
+            padding:30px;
+            float: right;
+            display: flex;
+            align-content: space-between;
+        }
+        .deleteBlog .blogCard{
+            width: 200px;
+            /* height: 100px; */
+            padding: 5px;
+            ;
+            display: inline-block;
+            /* background: #4d5e70; */
+            border-radius: 10px;
+            margin: 5px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
+        }
+        .deleteBlog .blogCard .content{
+            width: 100%;
+            height: 45px;
+            overflow:hidden;
+            text-overflow:ellipsis;
+             
+           
+        }
+        .deleteBlog .blogCard .button{
+            background: #d9534f;
+            border: 0;
+            border-radius: 4px;
+            padding: 2px;
+            cursor: pointer;
+        }
+        
+        #editor{
+            text-align: left;
+        }
+        .input{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 5px 3px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
+
+    </style>
+    <script  src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+   
+</head>
+<body>
+
+   <div class="inall" id="inall" >
+
+        <div class="option">
+            <dt>
+                <dl>选项</dl>
+                <dd :class="{'active':showleft}" @click="change_showLeft('add')">添加文章</dd>
+                <dd :class="{'active':!showleft}" @click="change_showLeft('delete')">删除文章</dd>
+            </dt>
+        </div>
+        <div class="addBlog" v-if="showleft">
+                    <p>博客文章内容，编辑栏</p>
+                    标题：
+                <input id="title" class="input title" type="text" placeholder="请输入标题" ></input>
+                    标签：
+                    <input id="tags" class="input tag" type="text" placeholder="请输入标签，并用逗号隔开"  ></input>
+                        <div id="editor">
+                            <p></p>
+                        </div>
+
+
+
+                <button onclick="submit()"  >提交</button>
+        </div>
+        <div class="deleteBlog"  v-if="!showleft">
+            <ul>
+                <li class="blogCard" v-for="item in blogName" :key="item.id">
+                    <p class="content" data-id="item.id">{{item.title}}</p>
+                  
+                    <!-- <button class="button"    @click="deleteBlog(item.id)">删除</button> -->
+                    <a class="button"    @click="deleteBlog(item.id)"  >删除</a>
+                </li>
+            </ul>
+        </div>
+   </div>
+   
+
+
+
+
+    
+
+
+
+   <script src="./js/controlBlog.js"></script>
+    <script type="text/javascript">
+
+            var E = window.wangEditor;
+            var editor = new E( document.getElementById('editor') );
+            editor.customConfig.uploadImgShowBase64 = true ;
+            editor.create();
+        function submit(){
+          
+                   
+                    var content = editor.txt.html();
+                    var title = $("#title").val();
+                    var tag = $("#tags").val();
+                console.log(content);
+                    var data = {title:this.title,tag:this.tag,content:this.content}
+                
+                    $.ajax({
+                        url:`/editBlog?title=${title}&tags=${tag}`,
+                        method:"post",
+                        data:content,
+                        success:function(res){
+                            console.log(res);
+                            alert("发布成功")
+                        },
+                        error:function(error){
+                            console.log(error)
+                        }
+                    })
+                 
+                     
+                }
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

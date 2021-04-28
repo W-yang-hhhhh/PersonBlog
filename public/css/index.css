@@ -1,0 +1,357 @@
+ /* .content .every_day{
+    background: white;
+    width: 95.7%;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 3px 4px 3px #888888;
+    padding: 10px 15px;
+}
+
+.every_day:before{
+    font-family: MY;
+    content:"\e122";
+    font-size: 12px;
+    color: slateblue;
+    position: relative;
+    display: block;
+    height: 0;
+    left: 54px;
+}
+
+
+.every_day span{
+    display: block;
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: slateblue;
+}
+
+.article_list{
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+.article{
+    background: #eee;
+    display: inline-block;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow:  1px 2px 2px #888888;
+    overflow: hidden;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.article_title{
+    display: inline-block;
+    font-size: 20px;
+    color: #13102b;
+    padding: 20px 10px  5px 10px;
+
+
+}
+.article_title:hover{
+    cursor: pointer;
+    color: #337ab7;
+}
+
+
+.article_content{
+    font-size: 14px;
+    color: #13102b;
+    padding: 0px 10px 20px 10px;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.article_foot {
+    color: #eeeeee;
+    background: #13102b;
+}
+
+.pager li{
+    display: inline-block;
+    width: 45px;
+    height: 24px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    line-height: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.pager li:hover{
+    background-color: #333;
+    color: #ccc;
+}
+
+.pager li.abc{
+    background-color: #333;
+    color: #ccc;
+}
+
+
+
+
+
+@media screen and (max-wisth:767px) {
+    .content .every_day{
+        background: white;
+        width: 95.7%;
+        text-align: left;
+        border-radius: 5px;
+        box-shadow: 3px 4px 3px #888888;
+        padding: 10px 15px;
+    }
+    
+    .every_day:before{
+        font-family: MY;
+        content:"\e122";
+        font-size: 12px;
+        color: slateblue;
+        position: relative;
+        display: block;
+        height: 0;
+        left: 54px;
+    }
+    
+    
+    .every_day span{
+        display: block;
+        font-size: 12px;
+        margin-bottom: 5px;
+        color: slateblue;
+    }
+    
+    .article_list{
+        width: 95%;
+        border-radius: 5px;
+        margin-top: 15px;
+    }
+    
+    .article{
+        background: #eee;
+        display: inline-block;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow:  1px 2px 2px #888888;
+        overflow: hidden;
+        text-align: left;
+        margin-top: 15px;
+    }
+    
+    .article_title{
+        display: inline-block;
+        font-size: 20px;
+        color: #13102b;
+        padding: 20px 10px  5px 10px;
+    
+    
+    }
+    .article_title:hover{
+        cursor: pointer;
+        color: #337ab7;
+    }
+    
+    
+    .article_content{
+        font-size: 14px;
+        color: #13102b;
+        padding: 0px 10px 20px 10px;
+        text-align: left;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow: hidden;
+    }
+    
+    .article_foot {
+        color: #eeeeee;
+        background: #13102b;
+    }
+    
+    .pager li{
+        display: inline-block;
+        width: 45px;
+        height: 24px;
+        border: 1px solid #000;
+        border-radius: 2px;
+        line-height: 24px;
+        cursor: pointer;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+    
+    .pager li:hover{
+        background-color: #333;
+        color: #ccc;
+    }
+    
+    .pager li.abc{
+        background-color: #333;
+        color: #ccc;
+    }
+} */
+
+
+
+
+
+
+html{font-size:10px}
+@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+
+@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+
+@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+
+@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}
+
+@media screen and (min-width:720px) and (max-width:749px){html{font-size:22.5px}}
+
+@media screen and (min-width:750px) and (max-width:799px){html{font-size:23.5px}}
+
+@media screen and (min-width:800px){html{font-size:25px}}
+
+
+
+
+
+
+ .content .every_day{
+    background: white;
+    width: 95%;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow: 3px 4px 3px #888888;
+    padding: 0.4rem 0.6rem;
+    margin-left: 1rem;
+}
+.content .every_day .every_day_refresh{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    float: right;
+}
+.content .every_day .every_day_refresh.role{
+    animation: op 3s infinite linear;
+}
+@keyframes op {
+    0%{
+      transform: rotateZ(0deg);
+      /* border-color: transparent transparent transparent #f40; */
+    }
+    
+    20%{
+        transform: rotateZ(72deg);
+    }
+    40%{
+        transform: rotateZ(144deg);
+      /* border-color: transparent transparent transparent #0f0; */
+    }
+    60%{
+      transform: rotateZ(216deg);
+      /* border-color: transparent transparent transparent #00f; */
+    }
+    80%{
+      transform: rotateZ(288deg);
+      /* border-color: transparent transparent transparent pink; */
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+  }
+
+.every_day:before{
+    font-family: MY;
+    content:"\e122";
+    font-size: 0.5rem;
+    color: slateblue;
+    position: relative;
+    display: block;
+    height: 0;
+    left: 2.1px;
+
+}
+
+
+.every_day span{
+    display: block;
+    font-size: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    color: slateblue;
+}
+
+.article_list{
+    width: 99%;
+    border-radius: 5px;
+    margin-top: 0.51rem;
+}
+
+.article{
+    background: #eee;
+    display: inline-block;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow:  1px 2px 2px #888888;
+    overflow: hidden;
+    text-align: left;
+    margin-top: 0.51rem;
+    margin-left: 1rem;
+}
+
+.article_title{
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #13102b;
+    padding: 0.8rem 0.4rem  0.2rem 0.4rem;
+
+
+}
+.article_title:hover{
+    cursor: pointer;
+    color: #337ab7;
+}
+
+
+.article_content{
+    font-size: 0.51rem;
+    color: #13102b;
+    padding: 0rem 0.4rem 0.8rem 0.4rem;
+    text-align: left;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.article_foot {
+    font-size: 0.8rem;
+    color: #eeeeee;
+    background: #13102b;
+}
+
+.pager li{
+    display: inline-block;
+    width: 1.8rem;
+    height: 0.91rem;
+    border: 1px solid #000;
+    border-radius: 2px;
+    line-height: 0.91rem;
+    cursor: pointer;
+    margin-right: 0.4rem;
+    font-size: 0.51rem;
+}
+
+.pager li:hover{
+    background-color: #333;
+    color: #ccc;
+}
+
+.pager li.abc{
+    background-color: #333;
+    color: #ccc;
+}

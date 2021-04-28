@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .inall{
+            width: 70%;
+            
+            text-align: center;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+
+   <div class="inall">
+       <p>每日一句，编辑栏</p>
+
+
+    <div id="editor">
+       <p>请输入。。。。 </p>
+    </div>
+
+    
+    <button onclick="submit()">提交</button>
+   </div>
+   
+
+
+
+
+    
+
+  
+
+<script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script type="text/javascript">
+    
+       var E = window.wangEditor;
+         var editor = new E( document.getElementById('editor') )
+        editor.create()
+    </script>
+    <script>
+       
+        function submit(){
+            var content =  editor.txt.text();
+            
+            $.ajax({
+                url:"/editEveryDay",
+                method:"post",
+                data:content,
+                success:function(resp){
+                    console.log(resp,"请求成功")
+                },
+                error:function(resp){
+                    console.log(resp,"请求失败")
+                }
+            })
+         
+        }
+    </script>
+    
+</body>
+</html>
